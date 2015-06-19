@@ -38,24 +38,52 @@ namespace FourthCoffee.Employees
             #region Query Data from Database
             //select all date
             IQueryable<Employee> emps1 = from e in DBContext.Employees
-                select e;
+                                         select e;
 
             //Filtering data by row
             string _LastName = "Prescott";
             IQueryable<Employee> emps2 = from e in DBContext.Employees
                                          where e.LastName == _LastName
                                          select e;
-            
+
             //Filtering Data By Column
+            //Returned data is stored in Strongly typed IQueriable<Type>
             IQueryable<FullName> names = from e in DBContext.Employees
-                select new FullName() {Firstname = e.FirstName, Surname = e.LastName};
+                                         select new FullName() { Firstname = e.FirstName, Surname = e.LastName };
 
             foreach (var fullName in names)
             {
-                Console.WriteLine("{0} {1}",fullName.Firstname,fullName.Surname);
+                Console.WriteLine("{0} {1}", fullName.Firstname, fullName.Surname);
             }
-            Console.ReadLine();
+            //Console.ReadLine();
 
+
+            //Filtering Data by Column
+            //Returned data is stored in Anonymous Type
+            var names1 = from e in DBContext.Employees
+                         select new { e.FirstName, e.LastName };
+
+            foreach (var fullName in names)
+            {
+                Console.WriteLine("{0} {1}", fullName.Firstname, fullName.Surname);
+            }
+            //Console.ReadLine();
+
+            //Grouping Data
+            var emps = from e in DBContext.Employees
+                       group e by e.JobTitle
+                           into eGroup
+                           select new
+                           {
+                               Job = eGroup.Key,
+                               Names = eGroup
+                           };
+
+            foreach (var emp in emps)
+            {
+                Console.WriteLine("{0} {1}", emp.Job.Value, emp.Names);
+
+            }
             #endregion
 
         }
@@ -75,7 +103,7 @@ namespace FourthCoffee.Employees
         {
             DateTime DOB = (DateTime)DateOfBirth;
             TimeSpan difference = DateTime.Now.Subtract(DOB);
-            int ageInYears = (int) (difference.Days/365.25);
+            int ageInYears = (int)(difference.Days / 365.25);
             return ageInYears;
         }
     }
