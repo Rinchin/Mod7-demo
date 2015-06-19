@@ -8,8 +8,22 @@ namespace FourthCoffee.Employees
 {
     class Program
     {
+        private static FourthCoffeeEntities DBContext;
         static void Main(string[] args)
         {
+            DBContext = new FourthCoffeeEntities();
+
+            GetListOfEmployees();
+
+            Console.WriteLine("------------------------");
+        }
+
+        private static void GetListOfEmployees()
+        {
+            foreach (Employee employee in DBContext.Employees)
+            {
+                Console.WriteLine("{0} {1}", employee.FirstName, employee.LastName);
+            }
         }
     }
 
