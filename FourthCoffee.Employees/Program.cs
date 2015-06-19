@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace FourthCoffee.Employees
 {
+    class FullName
+    {
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
+    }
+
     class Program
     {
         private static FourthCoffeeEntities DBContext;
@@ -13,17 +19,45 @@ namespace FourthCoffee.Employees
         {
             DBContext = new FourthCoffeeEntities();
 
-            GetListOfEmployees();
+            #region Select And Change Data In DataBase
+            //GetListOfEmployees();
 
-            Console.WriteLine("------------------------");
+            //Console.WriteLine("------------------------");
 
-            var emp = DBContext.Employees.First(e => e.LastName == "Prescott");
-            if (emp != null)
+            //var emp = DBContext.Employees.First(e => e.LastName == "Prescott");
+            //if (emp != null)
+            //{
+            //    emp.LastName = "Forsyth";
+            //}
+            //DBContext.SaveChanges(); //save all changes to datebase
+
+            //GetListOfEmployees();
+            //Console.ReadLine();
+            #endregion
+
+            #region Query Data from Database
+            //select all date
+            IQueryable<Employee> emps1 = from e in DBContext.Employees
+                select e;
+
+            //Filtering data by row
+            string _LastName = "Prescott";
+            IQueryable<Employee> emps2 = from e in DBContext.Employees
+                                         where e.LastName == _LastName
+                                         select e;
+            
+            //Filtering Data By Column
+            IQueryable<FullName> names = from e in DBContext.Employees
+                select new FullName() {Firstname = e.FirstName, Surname = e.LastName};
+
+            foreach (var fullName in names)
             {
-                emp.LastName = "Forsyth";
+                Console.WriteLine("{0} {1}",fullName.Firstname,fullName.Surname);
             }
-            GetListOfEmployees();
             Console.ReadLine();
+
+            #endregion
+
         }
 
         private static void GetListOfEmployees()
