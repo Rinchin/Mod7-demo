@@ -16,6 +16,14 @@ namespace FourthCoffee.Employees
             GetListOfEmployees();
 
             Console.WriteLine("------------------------");
+
+            var emp = DBContext.Employees.First(e => e.LastName == "Prescott");
+            if (emp != null)
+            {
+                emp.LastName = "Forsyth";
+            }
+            GetListOfEmployees();
+            Console.ReadLine();
         }
 
         private static void GetListOfEmployees()
