@@ -1,1 +1,10 @@
 C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\FourthCoffee.Employees.exe.config
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\FourthCoffee.Employees.exe
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\FourthCoffee.Employees.pdb
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\EntityFramework.dll
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\EntityFramework.SqlServer.dll
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\EntityFramework.xml
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\bin\Debug\EntityFramework.SqlServer.xml
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\obj\Debug\FourthCoffee.Employees.csprojResolveAssemblyReference.cache
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\obj\Debug\FourthCoffee.Employees.exe
+C:\microsoft_learning\Mod07\Democode\FourthCoffee.Employees\obj\Debug\FourthCoffee.Employees.pdb
